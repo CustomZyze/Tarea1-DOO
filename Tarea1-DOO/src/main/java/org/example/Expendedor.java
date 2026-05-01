@@ -1,6 +1,7 @@
 package org.example;
 
 public class Expendedor {
+
     private Deposito<Bebida> coca;
     private Deposito<Bebida> sprite;
     private Deposito<Moneda> monVu;
@@ -19,14 +20,17 @@ public class Expendedor {
         }
 
     }
-    public Bebida comprarBebida (Moneda m , int cual){
+    public Bebida comprarBebida (Moneda m , int cual) throws NoHayProductoException, PagoIncorrectoException, PagoInsuficienteException {
+
         if(m == null){
-            return null;
+            throw new PagoIncorrectoException();
         }
         if (m.getValor()< precio){
+            throw new PagoInsuficienteException();
             monVu.addAlgo(m);
-            return null;
+
         }
+
         Bebida b = null;
         if(cual == 1){
             b = coca.getAlgo();
@@ -41,7 +45,7 @@ public class Expendedor {
 
         if(b == null){
             monVu.addAlgo(m);
-            return null;
+            throw new NoHayProductoException();
         }
 
         int diferencia = m.getValor() - precio;

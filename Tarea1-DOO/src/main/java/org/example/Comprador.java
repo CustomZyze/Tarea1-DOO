@@ -3,8 +3,8 @@ package org.example;
 public class Comprador {
         private String sabor;
         private int vuelto;
-        public Comprador(Moneda m, int cualProducto, Expendedor exp) throws PagoIncorrectoException, NohayProductoException, PagoInsuficenteException{
-
+        public Comprador(Moneda m, int cualProducto, Expendedor exp) throws PagoIncorrectoException, NoHayProductoException, PagoInsuficienteException{
+            
             Producto p = exp.comprarProducto(m , cualProducto);
             if( p != null){
                 this.sabor = p.consumir();
@@ -13,7 +13,7 @@ public class Comprador {
             Moneda v;
 
             while((v = exp.getVuelto()) != null){
-                this.vuelto  += vuelto +  v.getValor();
+                this.vuelto = vuelto +  v.getValor();
             }
 
 

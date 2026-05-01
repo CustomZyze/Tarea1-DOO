@@ -5,6 +5,7 @@ public class Snickers extends Dulce{
         super(serie);
     }
 
+    @Override
     public String consumir(){
         return "snickers";
     }

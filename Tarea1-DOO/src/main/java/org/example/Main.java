@@ -1,5 +1,6 @@
 package org.example;
 import java.lang.reflect.Array;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 
 /**
@@ -19,7 +20,7 @@ public class Main {
      *     PagoIncorrectoException: cuando no se ingresa una moneda válida.
      *     PagoInsuficienteException: cuando se intenta comprar con
      *     una moneda de menor valor que el precio del producto.
-     * <p>     
+     * <p>
      * Además, prueba la compra de cada producto disponible en la enumeración
      * Enumeracion y ordena una lista de monedas mediante el metodo
      * {@code sort} y la interfaz  Comparable.
@@ -44,6 +45,8 @@ public class Main {
         } catch (PagoInsuficienteException g) {
             System.out.println("Error en la compra: " + g.getMessage());
             System.out.println("Vuelto: " + exp1.getVuelto());
+        } catch (Exception h) {
+            System.out.println("Error:" + h.getMessage());
         }
 
         //Prueba NoHayStock2 (Producto no esta en las opciones de la maquina (o sea null)
@@ -61,6 +64,8 @@ public class Main {
         } catch (PagoInsuficienteException g) {
             System.out.println("Error en la compra: " + g.getMessage());
             System.out.println("Vuelto: " + exp2.getVuelto());
+        } catch (Exception h) {
+            System.out.println("Error:" + h.getMessage());
         }
 
         //Prueba PagoIncorrecto
@@ -76,6 +81,8 @@ public class Main {
         } catch (PagoInsuficienteException g) {
             System.out.println("Error en la compra: " + g.getMessage());
             System.out.println("Vuelto: " + exp2.getVuelto());
+        } catch (Exception h) {
+            System.out.println("Error:" + h.getMessage());
         }
 
         //Prueba PagoInsuficiente
@@ -93,7 +100,10 @@ public class Main {
         } catch (PagoInsuficienteException g) {
             System.out.println("Error en la compra: " + g.getMessage());
             System.out.println("Vuelto: " + exp2.getVuelto());
+        } catch (Exception h) {
+            System.out.println("Error:" + h.getMessage());
         }
+
 
         System.out.println();
 
@@ -106,13 +116,18 @@ public class Main {
                 Comprador c1 = new Comprador(m1000, prod, exp3);
                 System.out.println("Consumiste: " + c1.queConsumiste());
                 System.out.println("Vuelto: " + c1.cuantoVuelto());
-            } catch (NoHayProductoException e) {
-                System.out.println("Error en la compra: No queda stock.");
-            } catch (PagoIncorrectoException e) {
-                System.out.println("Error en la compra: Moneda nula.");
-            } catch (PagoInsuficienteException e) {
-                System.out.println("Error en la compra: Dinero insuficiente.");
+            }  catch (NoHayProductoException e) {
+                System.out.println("Error en la compra: " + e.getMessage());
+                System.out.println("Vuelto: " + exp3.getVuelto());
+            } catch (PagoIncorrectoException f) {
+                System.out.println("Error en la compra: " + f.getMessage());
+            } catch (PagoInsuficienteException g) {
+                System.out.println("Error en la compra: " + g.getMessage());
+                System.out.println("Vuelto: " + exp3.getVuelto());
+            } catch (Exception h) {
+                System.out.println("Error:" + h.getMessage());
             }
+
         }
 
         //Prueba sorteo moneda

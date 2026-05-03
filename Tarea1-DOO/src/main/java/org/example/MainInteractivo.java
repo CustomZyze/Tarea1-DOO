@@ -1,7 +1,25 @@
 package org.example;
 import java.util.Scanner;
 
+/**
+ * Clase Main Interactiva donde se simula el funcionamiento de una maquina expendedora
+ * Entrega una interfaz de usuario usando la consola que deja realizar compras,
+ * escoger con que moneda pagas y ver si la operacion se pudo realizar o
+ * se logro consumir un producto
+ */
 public class MainInteractivo {
+    /**
+     * Metodo principal del main interactivo
+     * <p>
+     * Inicia un while que mantiene el programa en ejecucion, mostrando las opciones en la terminal
+     * Captura mediante scanner las entradas de teclado para poder navegar el menu, escoger que
+     * producto comprar y con que moneda comprar.
+     * <p>
+     * Tambien atrapa las excepciones (falta de stock,pago incorrecto y dinero insuficiente)
+     * y lo muestra sin detener el programa
+     * <p>
+     * @param args Argumentos que se usan en la linea de comeandos, antes de ejecutar
+     */
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
         System.out.println("Maquina Expendedora");

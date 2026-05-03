@@ -1,7 +1,16 @@
 package org.example;
 
+/**
+ * Clase que representa un expendedor de productos.
+ * Permite almacenar bebidas y dulces, vender productos mediante monedas
+ * y entregar vuelto cuando corresponde.
+ */
 public class Expendedor {
 
+    /**
+     * Depósitos internos del expendedor que almacenan un tipo específico de producto disponible para la venta.
+     * El depósito monVu almacena las monedas que deben ser entregadas como vuelto.
+     */
     private Deposito<Bebida> coca;
     private Deposito<Bebida> sprite;
     private Deposito<Moneda> monVu;
@@ -9,6 +18,11 @@ public class Expendedor {
     private Deposito<Dulce> super8;
     private Deposito<Dulce> snicker;
 
+    /**
+     * Crea los depósitos de productos y los llena con la cantidad indicada.
+     * Cada producto se inicializa con un número de serie distinto.
+     * @param numProductos cantidad de productos que se agregan a cada depósito.
+     */
     public Expendedor(int numProductos){
         coca = new Deposito<Bebida>();
         sprite = new Deposito<Bebida>();
@@ -27,6 +41,20 @@ public class Expendedor {
         }
 
     }
+
+    /**
+     * Compra un producto del expendedor usando una moneda.
+     * Verifica que la moneda exista, que el producto solicitado sea válido,
+     * que el pago sea suficiente y que exista stock disponible. Si la compra
+     * es exitosa, retorna el producto y guarda el vuelto en monedas de 100.
+     * Si la compra falla, la moneda ingresada queda disponible como vuelto.
+     * @param m moneda ingresada para pagar.
+     * @param cual producto solicitado mediante la enumeración.
+     * @return producto comprado.
+     * @throws PagoIncorrectoException si no se ingresa una moneda válida.
+     * @throws PagoInsuficienteException si el valor de la moneda no alcanza para comprar el producto.
+     * @throws NoHayProductoException si el producto solicitado no existe o no queda stock.
+     */
     public Producto comprarProducto (Moneda m , Enumeracion cual) throws NoHayProductoException, PagoIncorrectoException, PagoInsuficienteException {
 
         if(m == null){
@@ -66,7 +94,12 @@ public class Expendedor {
 
         return p;
     }
-
+    /**
+     * Entrega una moneda del vuelto disponible.
+     * Cada llamada retorna una moneda del depósito de vuelto. Si no quedan
+     * monedas disponibles, retorna null.
+     * @return una moneda de vuelto, o null si no hay vuelto disponible.
+     */
     public Moneda getVuelto(){
         return monVu.getAlgo();
 

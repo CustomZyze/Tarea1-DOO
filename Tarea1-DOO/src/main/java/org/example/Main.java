@@ -2,7 +2,29 @@ package org.example;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
+/**
+ * Clase principal donde se prueba el funcionamiento de la máquina expendedora.
+ * Contiene casos de prueba para verificar el proceso de compra y la validación
+ * de las excepciones personalizadas de la tarea. También revisa que se puedan
+ * comprar todos los productos disponibles en la máquina expendedora.
+ */
 public class Main {
+
+    /**
+     * Metodo de entrada principal del programa.
+     * Ejecuta una serie de pruebas para verificar el manejo de las siguientes
+     * excepciones:
+     *     NoHayProductoException: cuando no hay stock del producto
+     *     o cuando el producto solicitado no es válido.
+     *     PagoIncorrectoException: cuando no se ingresa una moneda válida.
+     *     PagoInsuficienteException: cuando se intenta comprar con
+     *     una moneda de menor valor que el precio del producto.
+     * <p>     
+     * Además, prueba la compra de cada producto disponible en la enumeración
+     * Enumeracion y ordena una lista de monedas mediante el metodo
+     * {@code sort} y la interfaz  Comparable.
+     * @param args argumentos ingresados al ejecutar el programa.
+     */
     public static void main(String[] args) {
         Expendedor exp1= new Expendedor(0);
         Expendedor exp2 = new Expendedor(12);
